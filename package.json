@@ -1,0 +1,16 @@
+{
+  "name": "newsapp",
+  "version": "1.0.0",
+  "main": "src/js/main.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
