@@ -42,16 +42,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Create a pool of all categories
     const pool = [...allArticles].sort(() => Math.random() - 0.5);
     for (const { id, categories } of containers) {
-        const isMixed = categories.length > 1;
-        const filtered = isMixed
-            ? pool // use all
-            : pool.filter(article => article.category === categories[0]); // use specific cat only
+        const filtered = pool.filter(article => categories.includes(article.category));
         assignArticlesById(id, filtered);
     }
-    // for (const { id, categories } of containers) {
-    //     const filtered = pool.filter(article => categories.includes(article.category));
-    //     assignArticlesById(id, filtered);
-    // }
     localStorage.setItem('articlePool', JSON.stringify(allArticles));
 });
 document.addEventListener('DOMContentLoaded', () => {

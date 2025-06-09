@@ -7,13 +7,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!rawCategory)
         return;
     const category = rawCategory;
-    // Set header text
     const title = document.getElementById('categoryTitle');
     if (title)
         title.textContent = category.toUpperCase();
-    // Fetch articles
+    // Fetch articles.
     const articles = await fetchHeadlinesByCategory(category);
-    // Retrieve old articles from localStorage and add new ones
+    // Retrieve old articles from localStorage and add new ones.
     const existingRaw = localStorage.getItem('articlePool');
     const existing = existingRaw ? JSON.parse(existingRaw) : [];
     const combined = [...existing, ...articles].filter((article, index, self) => index === self.findIndex(a => a.url === article.url));
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const container = document.getElementById('horizontalContainer');
     if (!container)
         return;
-    // Create each article, then render
+    // Create each article, then render.
     articles.forEach(article => {
         const banner = document.createElement('div');
         banner.classList.add('banner-horizontal');
